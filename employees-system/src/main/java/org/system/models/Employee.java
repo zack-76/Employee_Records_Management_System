@@ -6,9 +6,11 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -24,20 +26,18 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Entity
 @Table(name = "employees")
-public class Employee extends BaseEntity {
+public class Employee {
 
     /**
      * The constant serialVersionUID.
      */
     private static final long serialVersionUID = 1L;
 
-
     /**
      * the employee id
      */
     @NotBlank(message = "Employee ID is mandatory")
-    @UniqueElements(message = "Employee ID is unique ")
-    @Column(name = "employee_id", unique = true, nullable = false)
+    @Id
     private String employeeId;
     /**
      * The employee full name
@@ -52,18 +52,11 @@ public class Employee extends BaseEntity {
     @Column(nullable = false, name = "job_title")
     private String jobTitle;
     /**
-     * the employee hire date
-     */
-    @NotBlank(message = "Employee hire date is mandatory")
-    @Column(nullable = false, name = "hire_date")
-    private LocalDate hireDate;
-    /**
      * the employee employment status
      */
     @NotBlank(message = "Employee employment status is mandatory")
-    @Enumerated(EnumType.STRING)
     @Column(nullable = false, name = "employment_status")
-    private EmploymentStatus employmentStatus;
+    private String employmentStatus;
     /**
      * the employee address
      */
@@ -78,9 +71,9 @@ public class Employee extends BaseEntity {
     private String department;
 
     /**
-     * the employee contact information.
+     * the employee contact information email.
      */
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "emp_contact_info")
-    private ContactInformation contactInformation;
+    @Email(message = "Email should be valid")
+    @Column(nullable = false, name = "contact_information")
+    private String contactInformation;
 }

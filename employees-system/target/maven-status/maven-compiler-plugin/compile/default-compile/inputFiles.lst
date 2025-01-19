@@ -1,0 +1,15 @@
+/home/zackpicasso/IdeaProjects/employees-system/src/main/java/org/system/EmployeesSystemApplication.java
+/home/zackpicasso/IdeaProjects/employees-system/src/main/java/org/system/api/AuthenticationController.java
+/home/zackpicasso/IdeaProjects/employees-system/src/main/java/org/system/api/EmployeesController.java
+/home/zackpicasso/IdeaProjects/employees-system/src/main/java/org/system/config/SecurityAuditorAwareConfig.java
+/home/zackpicasso/IdeaProjects/employees-system/src/main/java/org/system/dto/ContactInformationDTO.java
+/home/zackpicasso/IdeaProjects/employees-system/src/main/java/org/system/dto/EmployeeDTO.java
+/home/zackpicasso/IdeaProjects/employees-system/src/main/java/org/system/exception/GlobalExceptionHandler.java
+/home/zackpicasso/IdeaProjects/employees-system/src/main/java/org/system/mapper/EmployeeMapper.java
+/home/zackpicasso/IdeaProjects/employees-system/src/main/java/org/system/models/BaseEntity.java
+/home/zackpicasso/IdeaProjects/employees-system/src/main/java/org/system/models/ContactInformation.java
+/home/zackpicasso/IdeaProjects/employees-system/src/main/java/org/system/models/Employee.java
+/home/zackpicasso/IdeaProjects/employees-system/src/main/java/org/system/models/EmploymentStatus.java
+/home/zackpicasso/IdeaProjects/employees-system/src/main/java/org/system/models/MaritalStatus.java
+/home/zackpicasso/IdeaProjects/employees-system/src/main/java/org/system/repository/EmployeeRepository.java
+/home/zackpicasso/IdeaProjects/employees-system/src/main/java/org/system/service/EmployeeService.java

@@ -9,6 +9,8 @@ import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -29,10 +31,14 @@ import java.util.List;
 @RestController
 @RequestMapping("/emp")
 @Tag(name = "Employee management", description = "Operations related to managing employees")
-@RequiredArgsConstructor
+@NoArgsConstructor
 public class EmployeesController {
 
-    private final EmployeeService employeeService;
+    private EmployeeService employeeService;
+
+    public EmployeesController(EmployeeService employeeService) {
+        this.employeeService = employeeService;
+    }
 
     @Operation(summary = "Get all employees", description = "Fetch all employees from the system")
     @ApiResponse(responseCode = "200", description = "List of employees retrieved")
@@ -40,6 +46,15 @@ public class EmployeesController {
     @PreAuthorize("hasAnyRole('HR', 'MANAGER', 'ADMIN')")
     public ResponseEntity<List<EmployeeDTO>> getAllEmployees() {
         return ResponseEntity.ok(employeeService.getAllEmployees());
+    }
+
+
+    @Operation(summary = "Get all employees by department", description = "Fetch all employees from the system")
+    @ApiResponse(responseCode = "200", description = "List of employees retrieved")
+    @GetMapping("/manager")
+    @PreAuthorize("hasAnyRole('HR', 'MANAGER', 'ADMIN')")
+    public ResponseEntity<List<EmployeeDTO>> getAllEmployeesByDepartment(@Parameter(in = ParameterIn.PATH, description = "employee id", required=true, schema=@Schema()) @PathVariable String department) {
+        return ResponseEntity.ok(employeeService.getAllEmployeesByDepartment(department));
     }
 
     @Operation(summary = "Create an employee", description = "Create a new employee in the system")

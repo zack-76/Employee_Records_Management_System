@@ -1,6 +1,7 @@
 package org.system.dto;
 
 
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,7 +9,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.validator.constraints.UniqueElements;
 
-import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -33,11 +33,6 @@ public class EmployeeDTO {
     @NotBlank(message = "Employee job title is mandatory")
     private String jobTitle;
     /**
-     * the employee hire date
-     */
-    @NotBlank(message = "Employee hire date is mandatory")
-    private String hireDate;
-    /**
      * the employee employment status
      */
     @NotBlank(message = "Employee employment status is mandatory")
@@ -56,5 +51,6 @@ public class EmployeeDTO {
     /**
      * the employee contact information.
      */
-    private ContactInformationDTO contactInformation;
+    @Email
+    private String contactInformation;
 }
